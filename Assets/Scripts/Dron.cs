@@ -13,8 +13,8 @@ public class Dron : MonoBehaviour
     private bool _isHaveResourse = false;
     private bool _isHaveCommand = false;
     private Transform _target;
-    private Resource _tempResourse; 
-
+    private Resource _tempResourse;
+   
 
     private void Update()
     {
@@ -28,9 +28,14 @@ public class Dron : MonoBehaviour
             {
                 MoveTarget(_base);
             }
+            else if (!_isHaveResourse && !_isHaveCommand)
+            {
+
+                FreeMove();
+            }
             else
             {
-                FreeMove();
+                MoveTarget(_target);
             }
         }
         
@@ -61,11 +66,14 @@ public class Dron : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out CommandCentr component))
         {
+
             if (_isHaveResourse)
             {
                 UnloadCargo();
                 component.AddCount();
+
                 component.AddDron(this);
+                
             }
             
         }

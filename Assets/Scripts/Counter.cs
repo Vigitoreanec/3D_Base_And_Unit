@@ -9,8 +9,10 @@ public class Counter : MonoBehaviour
 
     public void CountersAdd()
     {
+
         count++;
         _text.text = count.ToString();
+
     }
 
     public int GetCount()
@@ -18,9 +20,15 @@ public class Counter : MonoBehaviour
         return count;
     }
 
-    public void Minus()
+    public void MinusByDron()
     {
         count -= 3;
+        _text.text = count.ToString();
+    }
+
+    public void MinusByBase()
+    {
+        count -= 5;
         _text.text = count.ToString();
     }
 }
